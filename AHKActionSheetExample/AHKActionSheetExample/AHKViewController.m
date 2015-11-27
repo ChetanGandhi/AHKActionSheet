@@ -70,12 +70,15 @@
     actionSheet.blurRadius = 8.0f;
     actionSheet.buttonHeight = 50.0f;
     actionSheet.cancelButtonHeight = 50.0f;
+    actionSheet.animationDuration = 0.5f;
     actionSheet.cancelButtonShadowColor = [UIColor colorWithWhite:0.0f alpha:0.1f];
     actionSheet.separatorColor = [UIColor colorWithWhite:1.0f alpha:0.3f];
     actionSheet.selectedBackgroundColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
     UIFont *defaultFont = [UIFont fontWithName:@"Avenir" size:17.0f];
     actionSheet.buttonTextAttributes = @{ NSFontAttributeName : defaultFont,
                                           NSForegroundColorAttributeName : [UIColor whiteColor] };
+    actionSheet.disabledButtonTextAttributes = @{ NSFontAttributeName : defaultFont,
+                                                  NSForegroundColorAttributeName : [UIColor grayColor] };
     actionSheet.destructiveButtonTextAttributes = @{ NSFontAttributeName : defaultFont,
                                           NSForegroundColorAttributeName : [UIColor redColor] };
     actionSheet.cancelButtonTextAttributes = @{ NSFontAttributeName : defaultFont,
@@ -89,9 +92,9 @@
                                type:AHKActionSheetButtonTypeDefault
                             handler:nil];
 
-    [actionSheet addButtonWithTitle:NSLocalizedString(@"Add to Favorites", nil)
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Add to Favorites (disabled)", nil)
                               image:[UIImage imageNamed:@"Icon2"]
-                               type:AHKActionSheetButtonTypeDefault
+                               type:AHKActionSheetButtonTypeDisabled
                             handler:nil];
 
     for (int i = 0; i < 5; i++) {
@@ -121,6 +124,7 @@
     label1.text = @"Some helpful description";
     label1.textColor = [UIColor whiteColor];
     label1.font = [UIFont fontWithName:@"Avenir" size:17.0f];
+    label1.backgroundColor = [UIColor clearColor];
     [headerView addSubview:label1];
 
     return  headerView;

@@ -1,5 +1,4 @@
 # AHKActionSheet
-[![Twitter: @arekholko](https://img.shields.io/badge/contact-@arekholko-red.svg?style=flat)](https://twitter.com/arekholko)
 [![License: MIT](https://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://github.com/fastred/AHKActionSheet/blob/master/LICENSE)
 [![CocoaPods](https://img.shields.io/cocoapods/v/AHKActionSheet.svg?style=flat)](https://github.com/fastred/AHKActionSheet)
 
@@ -23,7 +22,7 @@ Build and run the `AHKActionSheetExample` project in Xcode. `AHKViewController.m
 
 ## Requirements
 
- * iOS 7.0 and above
+ * iOS 6.0 and above
  * ARC
  * Optimized for iPhone
 
@@ -44,10 +43,78 @@ A simple example:
 #import "AHKActionSheet.h"
 ...
 AHKActionSheet *actionSheet = [[AHKActionSheet alloc] initWithTitle:nil];
-[actionSheet addButtonWithTitle:@"Test" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
+[actionSheet addButtonWithTitle:@"Test" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *as) {
     NSLog(@"Test tapped");
 }];
 [actionSheet show];
 ```
 
 The view is customizable either directly or through a UIAppearance API. See the header file (`Classes/AHKActionSheet.h`) and the example project to learn more.
+
+## Changelog
+
+0.5.3
+
+* Added `cancelOnTapEmptyAreaEnabled` property
+* Updated the project to compile cleanly on Xcode 7
+
+0.5.2
+
+* Fixed visible cancel button even though its height was set to 0.
+
+0.5.1
+
+* Fixed issues with separators on iOS 8
+
+0.5
+
+* Fixed bugs on iOS 8
+
+0.4.2
+
+* Fixed incorrect orientation of the blurred snapshot on iOS 8
+
+0.4.1
+
+* Improved dismissal error handling
+
+0.4.0
+
+* Added a new button type: `AHKActionSheetButtonTypeDisabled`
+* Added `cancelOnPanGestureEnabled` property, which allows you to disable:
+  > Gesture-driven navigation with two ways to hide the control: either quick flick down or swipe and release (at the position when the blur is starting to fade)
+* Internal scroll view's `bounces` is now disabled when `cancelOnPanGestureEnabled` is turned off and when the scroll view's `contentSize`'s height is smaller than the screen's height.
+
+0.3.0
+
+* Added iOS 6 support
+
+0.2.0
+
+* Added `animationDuration` property
+* Added some basic unit tests
+* Improved comments in the header file
+
+0.1.3
+
+* Ready for projects with [more warnings](https://github.com/boredzo/Warnings-xcconfig/wiki/Warnings-Explained) enabled
+
+0.1.2
+
+* `UIWindow` is now snapshotted instead of `UIViewController's` `view`
+
+0.1.1
+
+* Refactorings
+* Bug fixes
+
+0.1.0
+
+* Initial release
+
+## Author
+
+Arkadiusz Holko:
+
+* [Blog](http://holko.pl/)
+* [@arekholko on Twitter](https://twitter.com/arekholko)
